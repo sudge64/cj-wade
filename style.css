@@ -56,3 +56,32 @@
     color: white;
     font-size: 2.5rem;
   }
+
+/*From the new style.css*/
+
+.content-table{
+  padding: 20px;
+}
+
+.content-graph{
+    
+  height: 100px;
+  width: 100px;
+  padding: 20px;
+  background: #98ff98;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.content-graph:hover{
+  background: #50b818;
+}
+
+.button_icon{
+  color: #7e7e7e;
+  height: 50px;
+  width: 50px;
+}
