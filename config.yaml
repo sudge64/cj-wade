@@ -1,4 +1,5 @@
 baseURL: https://sudge64.github.io/cj-wade/
+publishDir: docs
 
 languageCode: en-us
 title: "CJ Wade"
