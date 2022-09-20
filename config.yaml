@@ -1,9 +1,10 @@
-baseURL: https://cj-wade.com
-publishDir: docs
+baseURL: https://www.cj-wade.com/
 
 languageCode: en-us
 title: "CJ Wade"
 theme: "toha"
+
+publishDir: docs
 
 # Manage languages
 # For any more details, you can check the official documentation: https://gohugo.io/content-management/multilingual/
