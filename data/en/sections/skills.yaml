@@ -1,0 +1,59 @@
+# section information
+section:
+  name: Skills
+  id: skills
+  enable: true
+  weight: 2
+  showOnNavbar: true
+  # Can optionally hide the title in sections
+  # hideTitle: true
+
+# Your Skills.
+# Give a summary of you each skill in the summary section.
+skills:
+- name: C/C++
+  logo: images/c.svg
+  summary: "Know basic C/C++ programming. Used for problem solving and personal projects."
+  url: "https://en.wikipedia.org/wiki/C_(programming_language)"
+
+- name: Java
+  logo: images/java.svg
+  summary: "Passed at the top of my class with a grade of A."
+  url: "https://www.oracle.com/java/"
+
+- name: Python
+  logo: /images/python.svg
+  summary: "Using a fork called MicroPython for the firmware of my ground-up mechanical keyboard."
+  url: "https://micropython.org/"
+
+- name: HTML5
+  logo: /images/html5.svg
+  summary: "Designing web pages from the basic building blocks"
+  url: "https://en.wikipedia.org/wiki/HTML5"
+
+- name: Markdown
+  logo: /images/markdown.svg
+  summary: "All the articles on this website are written in Markdown, which essentially is human-friendly HTML."
+  url: "https://www.markdownguide.org/cheat-sheet/"
+
+- name: Visual Studio Code
+  logo: /images/vscode.svg
+  summary: "My text editor of choice."
+  url: "https://code.visualstudio.com/"
+
+- name: Visual Studio Community 2019
+  logo: /images/visualStudio.svg
+  summary: "Used for designing and building graphical user applications"
+  url: "https://visualstudio.microsoft.com/"
+
+- name: Linux
+  logo: /images/linux.svg
+  summary: "My main operating system. Working on an Ansible script for the automatic configuration of my desktops."
+  url: "https://github.com/sudge64/ansible_configuration/"
+
+- name: GitHub
+  logo: /images/github.svg
+  summary: "Experienced with git-based development. Mostly, use Github. Also, have experience Git CLI."
+  url: "https://github.com/sudge64/"
+
+
