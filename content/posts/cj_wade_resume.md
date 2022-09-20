@@ -6,8 +6,6 @@ author: "CJ Wade"
 
 ## Christian Wade
 
-* 874 Live Oak Circle, Hico, TX 76457
-* 817-922-8425
 * christian.wade@go.tarleton.edu
 
 ### Area of Interest
