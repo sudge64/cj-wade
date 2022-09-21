@@ -1,7 +1,7 @@
 # some information about you
 name: "CJ Wade"
 nickname: "CJ"
-image: "images/new-avatar.png"
+image: "images/092122_cj_profile_512x512.png"
 
 # greeting message before your name. it will default to "Hi! I am" if not provided
 greeting: "Hi, I'm"
@@ -9,7 +9,7 @@ greeting: "Hi, I'm"
 # give your contact information. they will be used in the footer
 contactInfo:
   email: "christian.wade@go.tarleton.edu"
-  phone: ""
+  #phone: ""
   github: "sudge64"
 
 # a summary of what you do

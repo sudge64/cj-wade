@@ -58,12 +58,12 @@ params:
 #    mailchimpURL: https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;id=094a24c76e
 
   # Add Background
-  background: "images/new-background.jpg"
+  background: "images/darker_shiny_CJ_bokeh_gradient_shaded.jpg"
 
   # Site logo
   logo:
-    main: images/main-logo.png
-    inverted: images/inverted-logo.png
-    favicon: images/favicon.png
+    main: images/main-logo.svg
+    inverted: images/inverted-logo.svg
+    favicon: images/favicon.svg
 
   
