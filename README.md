@@ -1,4 +1,9 @@
 # cj-wade
+
 Exercise in website design and hosting methods.
 
-Right now, there is only a JavaScript powered calculator I built following this tutorial, [Link](https://www.youtube.com/watch?v=j59qQ7YWLxw). There will be more to come in the future.
+Now home to my personal, [Hugo](https://github.com/gohugoio/hugo) powered website using the [Toha](https://themes.gohugo.io/themes/toha/) theme.
+
+So none of us forget:
+
+$x = {b \pm \sqrt{b^2-4ac} \over 2a}$
