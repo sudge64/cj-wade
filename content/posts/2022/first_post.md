@@ -76,4 +76,8 @@ Here is a table that describes the behavior of a two input AND logic gate.
 | 1 | 0 | 0 |
 | 1 | 1 | 1 |
 
+Here is some math!
+
+$x = {b \pm \sqrt{b^2-4ac} \over 2a}$
+
 This is my first post! Now to pontificate on the matters of the world...
