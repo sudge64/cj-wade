@@ -4,9 +4,7 @@ date: 2022-09-19T16:14:31-05:00
 author: "CJ Wade"
 ---
 
-## Second Heading
-
-### Third Heading
+## Lists, Ordered and Unordered
 
 An Unordered List:
 
@@ -25,6 +23,8 @@ An Ordered List:
 3. Item three
 
 > Block quotes
+
+### Code blocks
 
 Here is some C++ code:
 
@@ -66,6 +66,8 @@ Finally we have Python
 ```python
 print("Hello World!")
 ```
+
+#### Sundries
 
 Here is a table that describes the behavior of a two input AND logic gate.
 

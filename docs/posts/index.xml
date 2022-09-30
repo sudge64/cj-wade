@@ -31,7 +31,7 @@ Skills  4+ years experience in computer science-related field Languages:  C/C++ 
       <pubDate>Mon, 19 Sep 2022 16:14:31 -0500</pubDate>
       
       <guid>https://sudge64.github.io/posts/2022/first_post/</guid>
-      <description>Second Heading Third Heading An Unordered List:
+      <description>Lists, Ordered and Unordered An Unordered List:
   Item one
   Item two
   Item three
@@ -40,7 +40,7 @@ Skills  4+ years experience in computer science-related field Languages:  C/C++ 
   Item two
   Item three
    Block quotes
- Here is some C++ code:
+ Code blocks Here is some C++ code:
 #include &amp;lt;iostream&amp;gt;using namespace std; int main(){ cout &amp;lt;&amp;lt; &amp;#34;Hello World!&amp;#34; &amp;lt;&amp;lt; endl; } And here is some YAML
 --- - hosts: localhost connection: local become: true pre_tasks: - name: Update package manager &amp;#34;apt&amp;#34; cache tags: always apt: update_cache: yes upgrade: &amp;#39;yes&amp;#39; changed_when: false when: ansible_distribution in [&amp;#34;Debian&amp;#34;, &amp;#34;Ubuntu&amp;#34;, &amp;#34;Pop!</description>
     </item>
