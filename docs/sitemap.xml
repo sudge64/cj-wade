@@ -103,12 +103,27 @@
     <priority>0.1</priority>
   </url><url>
     <loc>https://sudge64.github.io/</loc>
-    <lastmod>2022-09-19T19:38:20-05:00</lastmod>
+    <lastmod>2022-10-08T13:27:14-05:00</lastmod>
   </url><url>
-    <loc>https://sudge64.github.io/posts/2022/sudge64/</loc>
-    <lastmod>2022-09-19T19:38:20-05:00</lastmod>
+    <loc>https://sudge64.github.io/tags/gpu/</loc>
+    <lastmod>2022-10-08T13:27:14-05:00</lastmod>
+  </url><url>
+    <loc>https://sudge64.github.io/tags/linux/</loc>
+    <lastmod>2022-10-08T13:27:14-05:00</lastmod>
   </url><url>
     <loc>https://sudge64.github.io/posts/</loc>
+    <lastmod>2022-10-08T13:27:14-05:00</lastmod>
+  </url><url>
+    <loc>https://sudge64.github.io/tags/qemu/</loc>
+    <lastmod>2022-10-08T13:27:14-05:00</lastmod>
+  </url><url>
+    <loc>https://sudge64.github.io/posts/2022/qemu_gpu_passthrough/</loc>
+    <lastmod>2022-10-08T13:27:14-05:00</lastmod>
+  </url><url>
+    <loc>https://sudge64.github.io/tags/</loc>
+    <lastmod>2022-10-08T13:27:14-05:00</lastmod>
+  </url><url>
+    <loc>https://sudge64.github.io/posts/2022/sudge64/</loc>
     <lastmod>2022-09-19T19:38:20-05:00</lastmod>
   </url><url>
     <loc>https://sudge64.github.io/posts/2022/cj_wade_resume/</loc>
@@ -124,7 +139,5 @@
   </url><url>
     <loc>https://sudge64.github.io/search/</loc>
     <priority>0.1</priority>
-  </url><url>
-    <loc>https://sudge64.github.io/tags/</loc>
   </url>
 </urlset>
