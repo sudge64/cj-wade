@@ -81,4 +81,4 @@ IT Support Specialist, Master Tech, Hico, Texas -- May 2017 – Aug. 2017
 
 ### Honors & Awards
 
-* Dean’s List, Tarleton State University, Fall 2020, Spring 2022
+* Dean’s List, Tarleton State University, Fall 2020, Spring 2022, Fall 2022
