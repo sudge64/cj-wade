@@ -10,6 +10,8 @@ I found the [Sick68](https://www.thingiverse.com/thing:3478494) on Thingiverse a
 
 I ordered all the components, printed the case, and soldered everything together. I enjoyed my time with it, but could never shake the drive to make one I could truly call my own.
 
+!(SiCK-68)[https://raw.githubusercontent.com/sudge64/cj-wade/main/content/posts/2024/images/IMG_3421.jpeg]
+
 During my winter break of 2021, I decided to build my own keyboard around the [Raspberry Pi Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/).
 
 It took all December, but I went from knowing nothing about how PCB's were made to designing my own.
