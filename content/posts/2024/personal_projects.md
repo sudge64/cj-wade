@@ -66,7 +66,7 @@ The design took all Saturday and my 3D printer took almost all Sunday. But I man
 
 ![Back](https://raw.githubusercontent.com/sudge64/cj-wade/main/content/posts/2024/images/rpi_case_back.JPG)
 
-You might notice the dip in the top of the case, that was do to me leaving it under another project in my car in the hot Texas summer sun.
+You might notice the dip in the top of the case, that was due to me leaving it under another project in my car in the hot Texas summer sun.
 
 This project was earlier in my FreeCAD journey, so the model and techniques are quite fiddly and limited. Although, I did impress myself that I managed to get the Raspberry Pi SVG logo onto the model.
 
