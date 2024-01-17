@@ -91,3 +91,5 @@ I had the top of the case printed at my university's maker spot (their printers 
 I fully intended to return with a modified DXF for their laser cutter, however, the rush of the end of the semester caught me unexpectedly.
 
 ![Printed](https://raw.githubusercontent.com/sudge64/cj-wade/main/content/posts/2024/images/keyboard_plate_front_crop.JPG)
+
+I do not consider this project complete, only on hold for the moment. It would not take much to push it over the finish line.
