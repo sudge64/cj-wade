@@ -1,0 +1,15 @@
+{
+  "name": "cj-wade",
+  "version": "1.0.0",
+  "description": "Personal Website and Blog.",
+  "scripts": {
+    "start": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
+  }
+}
