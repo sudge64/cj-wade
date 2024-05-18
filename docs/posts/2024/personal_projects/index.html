@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css">
+    <title>A Round-Up of a few Personal Projects</title>
+  </head>
+  <nav class="myNav">
+    <ul>
+      <li>
+        <a href="/" class="text-style">Home</a>
+      </li>
+      <li>
+      <li>
+        <a href="/#about" class="text-style">About</a>
+      </li>
+      <li>
+        <a href="/projects" class="text-style">Projects</a>
+      </li>
+      <li>
+        <a href="/pages/resume" class="text-style">Resume</a>
+      </li>
+    </ul>
+  </nav>
+  <body>
+    <main><h1>A Round-Up of a few Personal Projects</h1>
+<p>Here are some retrospectives on a few of my personal projects from the last little while.</p>
+<h2>Keyboard PCB</h2>
+<p>During the fall of 2021, I got bit by the mechanical keyboard bug. I couldn't find anything exactly to my liking after a little shopping around, so I decided to build my own.</p>
+<p>I found the <a href="https://www.thingiverse.com/thing:3478494">Sick68</a> on Thingiverse and decided to give it a whirl.</p>
+<p>I ordered all the components, printed the case, and soldered everything together. I enjoyed my time with it, but could never shake the drive to make one I could truly call my own.</p>
+<p><img src="/img/IMG_3421.jpeg" alt="SiCK-68"></p>
+<p>During my winter break of 2021, I decided to build my own keyboard around the <a href="https://www.raspberrypi.com/products/raspberry-pi-pico/">Raspberry Pi Pico</a>.</p>
+<p>It took all December, but I went from knowing nothing about how PCB's were made to designing my own.</p>
+<p>The traces as viewed from <a href="https://www.kicad.org/">KiCad</a>.</p>
+<p><img src="/img/keyboard_pcb_traces.png" alt="Traces"></p>
+<p>The front of the bare PCB.</p>
+<p><img src="/img/keyboard_pcb_front_crop.JPG" alt="Front"></p>
+<p>The back of the bare PCB.</p>
+<p><img src="/img/keyboard_pcb_back_crop.JPG" alt="Back"></p>
+<p>The front of the populated PCB. I apologize for the dust, the keyboard faithfully served as my daily driver for quite a while.</p>
+<p>Of note is the custom USB cable. It is made from a Micro USB breakout board connected to a USB-C breakout board through custom length wire.</p>
+<p>As DIY as that solution was, I eventually settled on the below, taking a left-angle Micro USB to USB-C adapter off Aliexpress and trimming off the outer casing.</p>
+<p><img src="/img/keyboard_final_plug.JPG" alt="USB"></p>
+<p><img src="/img/keyboard_final_front_crop.JPG" alt="Final Front"></p>
+<p>The back of the populated PCB.</p>
+<p><img src="/img/keyboard_final_back_crop.JPG" alt="Final Back"></p>
+<p>I am quite proud with how the keyboard turned out, although I see many areas that could feature improvement.</p>
+<p>To keep it brief,</p>
+<ul>
+<li>The RP2040 and it's various accompanying electric components could be integrated on to the PCB itself. This was my original goal, however, learning the software ate away more time than I expected, forcing me to pivot and use an entire Pico.</li>
+<li>The traces most certainly can be routed better.</li>
+<li>Switch to surface-mount diodes. I used through-hole diodes as I already had some on hand.</li>
+</ul>
+<h2>CAD</h2>
+<h3>Raspberry Pi Case</h3>
+<p>I attended a conference during the summer of 2021. It lasted for two weeks, but we were encouraged to go home during the first weekend.</p>
+<p>Several of the people that I had met were interested to learn that I knew how to use a Raspberry Pi.</p>
+<p>I wanted to bring it for the next week, but didn't have a good case to display it/protect it.</p>
+<p>Once I got home, I was struck with inspiration and immediately set out to make a case that integrated the Pi, official touch screen, and SSD mount.</p>
+<p>The design took all Saturday and my 3D printer took almost all Sunday. But I managed to pull it off.</p>
+<p><img src="/img/rpi_case_front.JPG" alt="Front"></p>
+<p><img src="/img/rpi_case_back.JPG" alt="Back"></p>
+<p>You might notice the dip in the top of the case, that was due to me leaving it under another project in my car in the hot Texas summer sun.</p>
+<p>This project was earlier in my FreeCAD journey, so the model and techniques are quite fiddly and limited. Although, I did impress myself that I managed to get the Raspberry Pi SVG logo onto the model.</p>
+<h3>Keyboard Case</h3>
+<p>Another CAD project that I have pride in is the case to the keyboard mentioned above.</p>
+<p>I went through around four different revisions to arrive to the present.</p>
+<p>During the current revision, I found myself better able to utilize FreeCAD as the authors intended it to be used; with one body and multiple sketches to define geometry as apposed to multiple bodies intersecting each other utilizing boolean operations for more complex geometry (as was my approach with the above RPi case).</p>
+<p>The holes for the keyswitches I generated from online tools into a DXF that I imported into FreeCAD.</p>
+<p>The case as viewed from <a href="https://www.freecad.org/">FreeCAD</a></p>
+<p><img src="/img/keyboard_case_cad_front.png" alt="Front"></p>
+<p><img src="/img/keyboard_case_cad_side.png" alt="Side"></p>
+<p>I had the top of the case printed at my university's maker spot (their printers have rectangular beds). Once in hand, I realized that I had designed the top layer with laser-cut tolerances in mind, rather than 3D printer tolerances.</p>
+<p>I fully intended to return with a modified DXF for their laser cutter, however, the rush of the end of the semester caught me unexpectedly.</p>
+<p><img src="/img/keyboard_plate_front_crop.JPG" alt="Printed"></p>
+<p>I do not consider this project complete, only on hold for the moment. It would not take much to push it over the finish line.</p>
+</main>
+  </body>
+  <footer>
+    <h6>
+      Copyright &copy; 2024 <i>Christian J. Wade.</i> Made with &hearts; in <a href="https://www.11ty.dev/">11ty</a>, & <a href="https://threejs.org/">Three.js</a>
+    </h6>
+  </footer>
+</html>
