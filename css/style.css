@@ -12,9 +12,17 @@ h2 {
 }
 
 ol {
-  
   font-style: bold;
 }
+
+a {
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    text-decoration: underline;
+}
+
 
 .profile {
   display: flex;
