@@ -5,7 +5,7 @@
   "scripts": {
     "start": "npx @11ty/eleventy --serve",
     "build": "npx @11ty/eleventy",
-    "deploy": "npm run build && gh-pages -d _site"
+    "deploy": "npm run build && gh-pages -d docs"
   },
   "dependencies": {
     "@11ty/eleventy": "^2.0.1"
