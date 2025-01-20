@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css">
+<style>
+img {
+  width: 650px;
+  height: 400px;
+}
+</style>
+    <title>How to Get a Yubikey working on Arch Linux</title>
+  </head>
+  <nav class="myNav">
+    <ul>
+      <li>
+        <a href="/" class="text-style">Home</a>
+      </li>
+      <li>
+      <li>
+        <a href="/#about" class="text-style">About</a>
+      </li>
+      <li>
+        <a href="/projects" class="text-style">Projects</a>
+      </li>
+      <li>
+        <a href="/pages/resume_export" class="text-style">Resume</a>
+      </li>
+    </ul>
+  </nav>
+  <body>
+    <main><h1>How to Get a Yubikey working on Arch Linux</h1>
+<p>In recent months, I've been becoming more and more security conscious. To that end, I've invested in hardware security keys, but have had a bear of a time getting them to work on Arch Linux (my operating system of choice, by the way).</p>
+<p>This morning I've finally had a break through and thought I'd share my findings.</p>
+<h2>Problem</h2>
+<p>I'm using the offical <a href="https://www.yubico.com/products/yubico-authenticator/#h-download-yubico-authenticator">Yubico Authenticator</a> app and no accounts, passkeys, certificates, or slots would show up in their tabs. Thankfully, the key itself did show up.</p>
+<p><img src="/img/yubi_failure.png" alt="An incredibily helpful error message."></p>
+<p>Launching the app from the terminal showed that there was an infinite loop of the authenticator failing to find whatever it was looking for.</p>
+<p>Okay, so the app can't talk to something on the back end, my first thought being a system service of some sort.</p>
+<h2>A Partial Solution</h2>
+<p>A quick search found <a href="https://www.reddit.com/r/yubikey/comments/stnuua/how_do_i_get_yubico_authenticator_to_work_on/">this Reddit thread</a>, where the top comment confirmed my theory. You need to enable the <code>pcscd</code> service. Now, this service is for interfacing with smart cards (more reading <a href="https://wiki.archlinux.org/title/Smartcards">here</a>), and smart cards are not as profilic today as they once were, so you will need to install the <code>pcsclite</code> package.</p>
+<pre><code class="language-bash">sudo pacman -S pcsclite
+</code></pre>
+<p>The Arch Wiki page linked above also recommends installing the <code>ccid</code> package, <em>which provides a generic USB interface for smart cards.</em> <a href="#1">1</a></p>
+<pre><code class="language-bash">sudo pacman -S ccid
+</code></pre>
+<p>Now we can enable the service.</p>
+<pre><code class="language-bash">sudo systemctl enable pcscd.service
+sudo systemctl start pcscd.service
+</code></pre>
+<p>In my experience, this alone does not fix the issue and I still receive the above error message.</p>
+<h2>The Final Piece of the Puzzle</h2>
+<p>All that build-up brings us to today. I was playing around with enabling and disabling the serivce, and on a whim, I decided to check the status of the service. This output immediately caught my eye:</p>
+<pre><code class="language-bash">pcscd.service: Referenced but unset environment variable evaluates to an empty string: PCSCD_ARGS
+</code></pre>
+<p>Plugging that into your search engine of choice should lead you to this <a href="https://ludovicrousseau.blogspot.com/2021/08/pcsc-lite-configuration-using.html">blog post by Ludovic Rousseau</a>. At the end of the article, is this snippet:</p>
+<p><em>### pcscd arguments</em></p>
+<p><em>pcscd is started with the extra parameter $PCSCD_ARGS. By default this variable is empty. But you can define PCSCD_ARGS in /etc/default/pcscd to add more arguments to pcscd.</em></p>
+<p><em>For example you can use:</em></p>
+<p><em><code>PCSCD_ARGS=--debug</code></em></p>
+<p><em>to get debug messages in the systemd journal.</em> <a href="#2">2</a></p>
+<p>Additionally, Rousseau mentions that the default configuration file for <code>pcscd.serivce</code> is located at <code>/etc/default/pcscd</code>. I created the file as the super user, added the single line <code>PCSCD_ARGS=--debug</code>, and restarted the service.</p>
+<p>Voila! The authenticator was now working perfectly!</p>
+<p><img src="/img/yubi_success.png" alt="The Authenticator working as expected."></p>
+<p>It is my hope that having this information in one spot can help someone down the road.</p>
+<h2>A Bashful Realization</h2>
+<p>So, while writing this post, I checked the man page for <code>pcscd</code> and noticed this section:</p>
+<pre><code class="language-bash">CONFIGURATION FILE
+       It is possible to set arguments that will be used by pcscd with the configuration
+        file /etc/default/pcscd For example you can increase the debug level using:
+              PCSCD_ARGS=--debug
+
+       Or set environment variables like:
+              PCSCLITE_FILTER_IGNORE_READER_NAMES=&quot;Twin&quot;
+              PCSCLITE_FILTER_EXTEND_READER_NAMES=&quot; $HOSTNAME&quot;
+
+       See https://blog.apdu.fr/posts/2021/08/pcsc-lite-configuration-using/ ⟨⟩ for more details.
+</code></pre>
+<p><a href="#3">3</a></p>
+<p>Moral of the story, Read The (F word of your choice) Manual.</p>
+<h2>References</h2>
+<ol>
+<li><a name="1"></a> <a href="https://wiki.archlinux.org/title/Smartcards">Copied from Arch Wiki</a></li>
+<li><a name="2"></a> <a href="https://ludovicrousseau.blogspot.com/2021/08/pcsc-lite-configuration-using.html">Copied from Ludovic Rousseau's Blog post</a></li>
+<li><a name="3"></a> Run <code>man pcscd</code></li>
+</ol>
+</main>
+  </body>
+  <footer>
+    <h6>
+      Copyright &copy; 2024 <i>Christian J. Wade.</i> Made with &hearts; in <a href="https://www.11ty.dev/">11ty</a>, & <a href="https://threejs.org/">Three.js</a>
+    </h6>
+  </footer>
+</html>
