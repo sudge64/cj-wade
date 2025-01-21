@@ -1,0 +1,26 @@
+.footer {
+    background-color: #7DC4E4;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.social-icons a {
+    color: #181926;
+    font-size: 1.5rem;
+    margin: 0 10px;
+}
+
+.social-icons i {
+    transition: color 0.3s;
+}
+
+.social-icons .fa-github:hover {
+    color: #FFFFFF;
+}
+
+@media (max-width: 1024px) {
+    .social-icons a {
+        font-size: 1.2rem;
+        margin: 0 5px;
+    }
+}
