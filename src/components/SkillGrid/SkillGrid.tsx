@@ -14,7 +14,7 @@ const SkillGrid = () => {
                 width="32"
                 src="https://unpkg.com/simple-icons@v11/icons/github.svg"
               />
-              <b>GitHub</b>
+              <b>&#9;GitHub</b>
               <p>
                 Experienced with git-based development. Both GitHub and Git cli.
               </p>
@@ -27,7 +27,7 @@ const SkillGrid = () => {
               width="32"
               src="https://unpkg.com/simple-icons@v11/icons/c.svg"
             />
-            <b>C</b>
+            <b>&#9;C</b>
             </Link>
             <p>
               Know basic <code>C</code> programming. Used for problem sovling
@@ -41,7 +41,7 @@ const SkillGrid = () => {
               width="32"
               src="https://unpkg.com/simple-icons@v11/icons/python.svg"
             />
-            <b>MicroPython</b>
+            <b>&#9;MicroPython</b>
             </Link>
             <p>
               Using a fork called <code>MicroPython</code> for the firmware of
@@ -55,7 +55,7 @@ const SkillGrid = () => {
               width="32"
               src="https://unpkg.com/simple-icons@v11/icons/react.svg"
             />
-            <b>React</b>
+            <b>&#9;React</b>
             </Link>
             <p>Designing web pages from the basic building blocks.</p>
           </div>
@@ -66,7 +66,7 @@ const SkillGrid = () => {
               width="32"
               src="https://unpkg.com/simple-icons@v11/icons/markdown.svg"
             />
-            <b>Markdown</b>
+            <b>&#9;Markdown</b>
             </Link>
             <p>
               All the articles on this website are written in{" "}
@@ -81,7 +81,7 @@ const SkillGrid = () => {
               width="32"
               src="https://unpkg.com/simple-icons@v11/icons/linux.svg"
             />
-            <b>Linux</b>
+            <b>&#9;Linux</b>
             </Link>
             <p>
               My operating system of choice. Always looking to improve, by the
@@ -95,7 +95,7 @@ const SkillGrid = () => {
               width="32"
               src="https://unpkg.com/simple-icons@v11/icons/rust.svg"
             />
-            <b>Rust</b>
+            <b>&#9;Rust</b>
             </Link>
             <p>
               Developed internal tools @{" "}
@@ -110,7 +110,7 @@ const SkillGrid = () => {
               width="32"
               src="https://unpkg.com/simple-icons@v11/icons/nodedotjs.svg"
             />
-            <b>NodeJS</b>
+            <b>&#9;NodeJS</b>
             </Link>
             <p>
               Built internal websites @{" "}
@@ -125,7 +125,7 @@ const SkillGrid = () => {
               width="32"
               src="https://unpkg.com/simple-icons@v11/icons/python.svg"
             />
-            <b>Python</b>
+            <b>&#9;Python</b>
             </Link>
             <p>
               Created a KiCad plugin for{" "}
