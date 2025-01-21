@@ -1,0 +1,45 @@
+.resume {
+  flex: 1;
+}
+
+.resume h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+}
+
+.resume h2 {
+  font-size: 1.2rem;
+}
+
+.resume p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.resume button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #001f3f;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.resume button:hover {
+  background-color: white;
+  color: #001f3f;
+  border: 1px solid #001f3f;
+}
