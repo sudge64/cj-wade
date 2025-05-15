@@ -1,0 +1,283 @@
+---
+layout: "layout.html"
+---
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Christian J. Wade</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+/*
+ * Copyright 2013 Christophe-Marie Duquesne <chmd@chmd.fr>
+ *
+ * CSS for making a resume with pandoc. Inspired by moderncv.
+ *
+ * This CSS document is delivered to you under the CC BY-SA 3.0 License.
+ * https://creativecommons.org/licenses/by-sa/3.0/deed.en_US
+ */
+
+/* Whole document */
+body {
+    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+    font-family: "Helvetica", sans-serif;
+    width: 900px;
+    margin: auto;
+    padding: 1px 1px 1px 1px;
+}
+
+.title {
+    display: none;
+}
+
+/* Title of the resume */
+h1 {
+    font-size: 40px;
+    /*color: #757575;*/
+    color: #24273a;
+    text-align:center;
+    margin-bottom:15px;
+}
+
+/* Titles of categories */
+h2 {
+    /*color: #397249;*/
+    color: #1e66f5;
+}
+/* There is a bar just before each category */
+h2:before {
+    content: "";
+    display: inline-block;
+    margin-right:1%;
+    width: 16%;
+    height: 5px;
+    /*background-color: #9CB770;*/
+    background-color: #1e66f5;
+}
+
+h2:after {
+    content: "";
+    display: inline-block;
+    margin-left:1%;
+    width: 16%;
+    height: 5px;
+    /*background-color: #9CB770;*/
+    background-color: #1e66f5;
+}
+
+/* Definitions */
+dt {
+    float: left;
+    clear: left;
+    width: 17%;
+    font-weight: bold;
+}
+dd {
+    margin-left: 17%;
+}
+p {
+    margin-top:0;
+    margin-bottom:2px;
+}
+
+/* Blockquotes */
+blockquote {
+    text-align: center
+}
+
+/* Links */
+a {
+    text-decoration: none;
+}
+a:hover, a:active {
+    text-decoration: underline;
+}
+
+/* Horizontal separators */
+hr {
+    color: #A6A6A6;
+}
+
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Christian J. Wade</h1>
+</header>
+<h1 id="christian-j.-wade">Christian J. Wade</h1>
+<h2 id="about">About</h2>
+<dl>
+<dt>A Little About Me</dt>
+<dd>
+Hello! My name is Christian J. Wade, but please, call me C.J.
+</dd>
+<dd>
+I’m a Computer Science graduate with a concentration in software
+engineering.
+</dd>
+<dd>
+I like to work in low-level environments, microcontrollers for instance.
+The <code>RP2040</code> being a favorite of mine.
+</dd>
+<dd>
+(By the way, the resume you’re reading is either an <code>HTML</code> or
+<code>PDF</code> file generated from a <code>MARKDOWN</code> source
+through <code>pandoc</code>.)
+</dd>
+</dl>
+<h2 id="education">Education</h2>
+<dl>
+<dt>2025 - Continuing</dt>
+<dd>
+<strong>Master’s of Science, Computer Engineering</strong>
+</dd>
+<dd>
+Tarleton State University, Stephenville, TX
+</dd>
+<dt>2018 - 2023</dt>
+<dd>
+<strong>Bachelor of Science, Computer Science</strong>
+</dd>
+<dd>
+<p>Tarleton State University, Stephenville, TX</p>
+<p><em>Minor: Mathematics</em></p>
+</dd>
+</dl>
+<h2 id="experience">Experience</h2>
+<dl>
+<dt>Jan. 2024 - May 2024</dt>
+<dd>
+<p><strong>R&amp;D Engineer @ Adom Inc</strong></p>
+<ul>
+<li>Developed internal tools to speed other employees through monotonous
+workflows</li>
+<li>Worked directly with other employees to add features and
+improvements to internal tools</li>
+<li>Studied code of KiCad to recreate file formats</li>
+</ul>
+</dd>
+<dt>Aug. 2023 – Dec. 2023</dt>
+<dd>
+<p><strong>Arm Assembly Programming</strong></p>
+<ul>
+<li>Programmed in Arm Assembly</li>
+<li>Deployed on Texas Instruments <em>TM4C123GH6PM</em>
+microcontroller</li>
+<li>Designated coursework for <em>Microprocessor System Design</em>
+class</li>
+</ul>
+</dd>
+<dt>Aug. 2019 - Dec. 2023</dt>
+<dd>
+<p><strong>Teacher’s Assistant</strong> - Computer Science &amp;
+Calculus-based Physics</p>
+<ul>
+<li>Communicated with professors &amp; students</li>
+<li>Assisted students struggling with material</li>
+<li>Graded student assignments &amp; assisted professors</li>
+</ul>
+</dd>
+<dt>May 2019 - Aug. 2019</dt>
+<dd>
+<p><strong>Python Physics Researcher</strong></p>
+<ul>
+<li>Searched astronomical data set for evidence of binary stars</li>
+<li>Operated Python scripts in a Linux environment to convert data
+set</li>
+<li>Operated Alard’s ISIS Image Subtraction Package to search data
+set</li>
+<li>Corresponded with mentor daily to progress through data set</li>
+</ul>
+</dd>
+</dl>
+<h2 id="projects">Projects</h2>
+<dl>
+<dt>Jun. 2023 - Continuing</dt>
+<dd>
+<p><strong>Bash Automation Scripting</strong></p>
+<ul>
+<li>Developed Bash scripts for the automatic set up of Linux
+desktops</li>
+<li>Used to download specified applications</li>
+<li>Delivered preconfigured dot-files into respective directories</li>
+</ul>
+</dd>
+<dt>Dec. 2021 - Continuing</dt>
+<dd>
+<p><strong>Custom Server</strong></p>
+<ul>
+<li>Assembled a custom virtualization and storage server</li>
+<li>Deployed LXC and Docker containers for the hosting of services</li>
+<li>Constructed low cost server rack from lumber</li>
+</ul>
+</dd>
+<dt>Dec. 2021</dt>
+<dd>
+<p><strong>Printed Circuit Board Design &amp; Manufacturing</strong></p>
+<ul>
+<li>Designed a custom PCB for a keyboard using KiCad</li>
+<li>Started with little knowledge on the subject</li>
+<li>Manufactured PCB overseas and assembled keyboard at home</li>
+</ul>
+</dd>
+</dl>
+<h2 id="skills">Skills</h2>
+<dl>
+<dt>2018 - Continuing</dt>
+<dd>
+<p>5+ years experience in computer science-related fields</p>
+<ul>
+<li>Languages: C, Rust, Arm Assembly, Python, HTML, Javascript,
+Markdown, NodeJS</li>
+<li>Operating Systems: Linux, Windows, macOS</li>
+</ul>
+</dd>
+</dl>
+<h2 id="honors-awards">Honors &amp; Awards</h2>
+<dl>
+<dt>Dean’s List</dt>
+<dd>
+<p>Tarleton State University</p>
+<p>Fall 2020, Spring 2022, Fall 2022, Spring 2023, Fall 2023</p>
+</dd>
+</dl>
+<h2 id="activities-interests">Activities &amp; Interests</h2>
+<dl>
+<dt>3D Printing</dt>
+<dd>
+I bought a 3D printer in 2020, and quickly started printing anything and
+everything – not only things online, but models that I personally
+designed in CAD.
+</dd>
+<dt>Video Production</dt>
+<dd>
+I have experience with video production, from setup to final edit, as
+well as stop-motion animation.
+</dd>
+</dl>
+<blockquote>
+<p><a href="mailto:christian.wade@go.tarleton.edu"
+class="email">christian.wade@go.tarleton.edu</a><br />
+<a href="https://cj-wade.com" class="uri">https://cj-wade.com</a><br />
+</p>
+</blockquote>
+</body>
+</html>
