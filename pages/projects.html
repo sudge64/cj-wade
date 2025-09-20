@@ -1,0 +1,9 @@
+---
+title: Projects
+permalink: projects.html
+layout: layout.html
+---
+<h1>{{ title }}</h1>
+{% for post in collections.posts reversed -%}
+    <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+{% endfor %}

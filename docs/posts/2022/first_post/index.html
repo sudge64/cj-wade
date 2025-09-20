@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css">
+<style>
+img {
+  width: 650px;
+  height: 400px;
+}
+</style>
+    <title>Testing Markdown Syntax</title>
+  </head>
+  <nav class="myNav">
+    <ul>
+      <li>
+        <a href="/" class="text-style">Home</a>
+      </li>
+      <li>
+      <li>
+        <a href="/#about" class="text-style">About</a>
+      </li>
+      <li>
+        <a href="/projects" class="text-style">Projects</a>
+      </li>
+      <li>
+        <a href="/pages/resume_export" class="text-style">Resume</a>
+      </li>
+    </ul>
+  </nav>
+  <body>
+    <main><h1>Testing Markdown Syntax</h1>
+<h2>Lists, Ordered and Unordered</h2>
+<p>An Unordered List:</p>
+<ul>
+<li>
+<p>Item one</p>
+</li>
+<li>
+<p>Item two</p>
+</li>
+<li>
+<p>Item three</p>
+</li>
+</ul>
+<p>An Ordered List:</p>
+<ol>
+<li>
+<p>Item one</p>
+</li>
+<li>
+<p>Item two</p>
+</li>
+<li>
+<p>Item three</p>
+</li>
+</ol>
+<blockquote>
+<p>Block quotes</p>
+</blockquote>
+<h3>Code blocks</h3>
+<p>Here is some C++ code:</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+
+int main(){
+    cout &lt;&lt; &quot;Hello World!&quot; &lt;&lt; endl;
+}
+</code></pre>
+<p>And here is some YAML</p>
+<pre><code class="language-yaml">---
+- hosts: localhost
+  connection: local
+  become: true
+
+  pre_tasks:
+  - name: Update package manager &quot;apt&quot; cache
+    tags: always
+    apt: 
+      update_cache: yes
+      upgrade: 'yes'
+    changed_when: false
+    when: ansible_distribution in [&quot;Debian&quot;, &quot;Ubuntu&quot;, &quot;Pop!_OS&quot;]
+
+  - name: Update package manager &quot;dnf&quot; cache
+    tags: always
+    dnf: update_cache=yes
+    changed_when: false
+    when: ansible_distribution in [&quot;Fedora&quot;]
+</code></pre>
+<p>Finally we have Python</p>
+<pre><code class="language-python">print(&quot;Hello World!&quot;)
+</code></pre>
+<h4>Sundries</h4>
+<p>Here is a table that describes the behavior of a two input AND logic gate.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">x</th>
+<th style="text-align:center">y</th>
+<th style="text-align:center">AND</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+<p>Here is some math!</p>
+<p>$x = {b \pm \sqrt{b^2-4ac} \over 2a}$</p>
+<p>This is my first post! Now to pontificate on the matters of the world...</p>
+</main>
+  </body>
+  <footer>
+    <h6>
+      Copyright &copy; 2024 <i>Christian J. Wade.</i> Made with &hearts; in <a href="https://www.11ty.dev/">11ty</a>, & <a href="https://threejs.org/">Three.js</a>
+    </h6>
+  </footer>
+</html>
