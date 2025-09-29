@@ -29,7 +29,7 @@ The following are the steps that I take in order to set up a Windows, specifical
 
 5. On the CPUs tab, I click on `Topology`, then `Manually set CPU topology`. I choose 1 for `sockets`, put in half of my physical CPU cores for `cores`, and give each core two threads for `threads`.
 
-![virt-manager CPU Tab](/img/virt-manager_cpu_tab.png)
+![virt-manager CPU Tab](/images/2022/virt-manager_cpu_tab.png)
 
 6. I remove the NIC device. Doing this will allow you to make a local account instead of being forced to make a Microsoft account.
 
