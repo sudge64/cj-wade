@@ -1,32 +1,23 @@
-PANOPTS=--standalone --table-of-contents --css=css/style.css --section-divs --email-obfuscation=references --include-before-body=_includes/header.html --include-after-body=_includes/footer.html --katex
+.PHONY: all clean
 
-#%.ico: %.png
-	#convert png:$< ico:$@
-	#@chmod 644 $@
-#
-#%.html: %.md | main.css footer.html
-	#pandoc $(PANOPTS) --from=markdown --to=html --output=$@ $<
-	#@chmod 644 $@
+# Configuration
+PANOPTS = --standalone \
+          --table-of-contents \
+          --css=css/style.css \
+          --section-divs \
+          --email-obfuscation=references \
+          --include-before-body=_includes/header.html \
+          --include-after-body=_includes/footer.html \
+          --katex
 
-#all: $(patsubst %.md,%.html,$(wildcard *.md)) favicon.ico sitemap.xml
-	#@echo Check permissions, then use make push to upload.
+all:
+	mkdir -p ./docs
+	find . -path './docs' -prune -o -name '*.md' -type f -exec \
+		sh -c 'pandoc $(PANOPTS) --from=markdown --to=html \
+		--output "docs/$(dirname "$$1")/$(basename "$$1" .md).html" "$$1"' _ {} \;
 
-#footer.html: footer.md | main.css
-	#pandoc --from=markdown --to=html --output=$@ $<
-	#@chmod 644 $@
-%.html: %.md
-	find . -name '*.md' -type f -exec pandoc $(PANOPTS) --from=markdown --to=html --output {}.html {} \;
-	#pandoc $(PANOPTS) --from=markdown --to=html --output $@ $<
-	find . -depth -name '*.md.html' -execdir bash -c 'mv -i "$1" "${1//md.html/html}"' bash {} \;
-	#@chmod 644 $@
-all: $(patsubst %.md, %.html, $(wildcard *.md))
-	@echo Check permissions, the use make push to upload.
-#sitemap.xml: $(patsubst %.md,%.html,$(wildcard *.md))
-	#./gensitemap.sh > $@
-	#@chmod 644 $@
+clean:
+	rm -rf docs/*.html
 
-#push:
-	#rsync -Fav . lock.cmpxchg8b.com:www/
+# Note: Replace 'make push' with your deployment command as needed
 
-#clean:
-	#rm -f *.html *.ico sitemap.xml
