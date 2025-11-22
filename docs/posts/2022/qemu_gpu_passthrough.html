@@ -1,184 +1,89 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="author" content="C.J. Wade" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QEMU GPU Passthrough Methodology</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      {   }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-    code span.at { color: #7d9029; } /* Attribute */
-    code span.bn { color: #40a070; } /* BaseN */
-    code span.bu { color: #008000; } /* BuiltIn */
-    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #4070a0; } /* Char */
-    code span.cn { color: #880000; } /* Constant */
-    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-    code span.dt { color: #902000; } /* DataType */
-    code span.dv { color: #40a070; } /* DecVal */
-    code span.er { color: #ff0000; font-weight: bold; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #40a070; } /* Float */
-    code span.fu { color: #06287e; } /* Function */
-    code span.im { color: #008000; font-weight: bold; } /* Import */
-    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-    code span.op { color: #666666; } /* Operator */
-    code span.ot { color: #007020; } /* Other */
-    code span.pp { color: #bc7a00; } /* Preprocessor */
-    code span.sc { color: #4070a0; } /* SpecialChar */
-    code span.ss { color: #bb6688; } /* SpecialString */
-    code span.st { color: #4070a0; } /* String */
-    code span.va { color: #19177c; } /* Variable */
-    code span.vs { color: #4070a0; } /* VerbatimString */
-    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-  </style>
-  <link rel="stylesheet" href="/css/style.css" />
-</head>
+      <meta name="author" content="C.J. Wade">
+      <meta name="date" content="2022-10-08T13:27:14-05:00">
+      <link rel="stylesheet" href="/css/style.css">
+    </head>
 <body>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css">
-    <title>{{ title | default: "C.J. Wade" }}</title>
-  </head>
-  <nav class="myNav">
-    <ul>
-      <li>
-        <a href="/" class="text-style">Home</a>
-      </li>
-      <li>
-        <a href="/#about" class="text-style">About</a>
-      </li>
-      <li>
-        <a href="/projects" class="text-style">Projects</a>
-      </li>
-      <li>
-        <a href="/pages/resume_export" class="text-style">Resume</a>
-      </li>
-    </ul>
-  </nav>
-<header id="title-block-header">
-<h1 class="title">QEMU GPU Passthrough Methodology</h1>
-<p class="author">C.J. Wade</p>
-<p class="date">2022-10-08T13:27:14-05:00</p>
-</header>
-<section id="qemu-gpu-passthrough-methodology" class="level1">
-<h1>QEMU GPU Passthrough Methodology</h1>
-<p>The following are the steps that I take in order to set up a Windows,
-specifically 11, virtual machine under Pop!_OS Linux.</p>
-<ol type="1">
-<li><p>If I am working with a new install of Pop!_OS, I run this <a
-href="https://github.com/pavolelsig/Passthrough_helper_PopOS">script</a>
-from Pavol Elsig. It takes all the grunt work out of hiding your GPU
-from the host os.</p></li>
-<li><p>I then follow this <a
-href="https://christitus.com/vm-setup-in-linux/">guide</a> from Chris
-Titus. It walks you through installing the necessary packages, as well
-as some tweaks for networking and allowing your <code>$USER</code> to
-access the virtualization packages.</p></li>
-<li><p>Use <code>virt-manager</code> to create a new virtual machine.
-Before beginning the installation, copy your Windows 11 iso file to
-<code>/var/lib/libvirt/images/</code>. You will need root privileges. I
-would recommend that you download the <a
-href="https://github.com/virtio-win/virtio-win-pkg-scripts">latest
-virtio-win driver iso</a>, and place it in the same directory as the
-Windows 11 iso.</p>
-<ol type="1">
-<li><p>Choose <code>Local install media.</code></p></li>
-<li><p>Select your guest os iso file. <code>virt-manager</code> will
-auto-detect what os the iso is.</p></li>
-<li><p>Give the virtual machine the amount of RAM that you want. Leave
-the CPUs field as it is for now.</p></li>
-<li><p>Personally, I like to passthrough a physical disk for the guest
-using the <code>Select or create custom storage</code> field.</p></li>
-<li><p>Name the virtual machine a name that is easily identifible, and
-select <code>Customize configuration before install</code>.</p></li>
-</ol></li>
-<li><p>On the overview tab, I select the
-<code>OVMF_CODE_4M.secboot.fd</code> firmware.</p></li>
-<li><p>On the CPUs tab, I click on <code>Topology</code>, then
-<code>Manually set CPU topology</code>. I choose 1 for
-<code>sockets</code>, put in half of my physical CPU cores for
-<code>cores</code>, and give each core two threads for
-<code>threads</code>.</p></li>
-</ol>
-<figure>
-<img src="/images/2022/virt-manager_cpu_tab.png"
-alt="virt-manager CPU Tab" />
-<figcaption aria-hidden="true">virt-manager CPU Tab</figcaption>
-</figure>
-<ol start="6" type="1">
-<li><p>I remove the NIC device. Doing this will allow you to make a
-local account instead of being forced to make a Microsoft
-account.</p></li>
-<li><p>Then click the <code>Add Hardware</code> and add the GPU and the
-GPU audio device one after the other. Also add another CDROM drive and
-put the virtio-win iso in it.</p></li>
-<li><p>Now for a little tinkering. Click on the <code>Overview</code>
-tab, then the <code>XML</code> sub-tab. Under the
-<code>&lt;vcpu&gt;</code> tags, you can add <code>&lt;cputune&gt;</code>
-tags to pin certain cores of your CPU to the virtual machine to improve
-performance. This <strong>will</strong> differ from machine to machine
-(you can check your system by running <code>lscpu -e</code>), but I have
-chosen to pin half my CPU cores as follows.</p></li>
-</ol>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode xml"><code class="sourceCode xml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">cputune</span>&gt;</span>
+    <!-- Default header if you want one -->
+  
+  <main>
+        <header>
+      <h1>QEMU GPU Passthrough Methodology</h1>
+            <p class="date">2022-10-08T13:27:14-05:00</p>
+                  <p class="author">By C.J. Wade</p>
+          </header>
+    
+    
+    <section id="qemu-gpu-passthrough-methodology" class="level1">
+    <h1>QEMU GPU Passthrough Methodology</h1>
+    <p>The following are the steps that I take in order to set up a
+    Windows, specifically 11, virtual machine under Pop!_OS Linux.</p>
+    <ol type="1">
+    <li><p>If I am working with a new install of Pop!_OS, I run this <a
+    href="https://github.com/pavolelsig/Passthrough_helper_PopOS">script</a>
+    from Pavol Elsig. It takes all the grunt work out of hiding your GPU
+    from the host os.</p></li>
+    <li><p>I then follow this <a
+    href="https://christitus.com/vm-setup-in-linux/">guide</a> from
+    Chris Titus. It walks you through installing the necessary packages,
+    as well as some tweaks for networking and allowing your
+    <code>$USER</code> to access the virtualization packages.</p></li>
+    <li><p>Use <code>virt-manager</code> to create a new virtual
+    machine. Before beginning the installation, copy your Windows 11 iso
+    file to <code>/var/lib/libvirt/images/</code>. You will need root
+    privileges. I would recommend that you download the <a
+    href="https://github.com/virtio-win/virtio-win-pkg-scripts">latest
+    virtio-win driver iso</a>, and place it in the same directory as the
+    Windows 11 iso.</p>
+    <ol type="1">
+    <li><p>Choose <code>Local install media.</code></p></li>
+    <li><p>Select your guest os iso file. <code>virt-manager</code> will
+    auto-detect what os the iso is.</p></li>
+    <li><p>Give the virtual machine the amount of RAM that you want.
+    Leave the CPUs field as it is for now.</p></li>
+    <li><p>Personally, I like to passthrough a physical disk for the
+    guest using the <code>Select or create custom storage</code>
+    field.</p></li>
+    <li><p>Name the virtual machine a name that is easily identifible,
+    and select
+    <code>Customize configuration before install</code>.</p></li>
+    </ol></li>
+    <li><p>On the overview tab, I select the
+    <code>OVMF_CODE_4M.secboot.fd</code> firmware.</p></li>
+    <li><p>On the CPUs tab, I click on <code>Topology</code>, then
+    <code>Manually set CPU topology</code>. I choose 1 for
+    <code>sockets</code>, put in half of my physical CPU cores for
+    <code>cores</code>, and give each core two threads for
+    <code>threads</code>.</p></li>
+    </ol>
+    <figure>
+    <img src="/images/2022/virt-manager_cpu_tab.png"
+    alt="virt-manager CPU Tab" />
+    <figcaption aria-hidden="true">virt-manager CPU Tab</figcaption>
+    </figure>
+    <ol start="6" type="1">
+    <li><p>I remove the NIC device. Doing this will allow you to make a
+    local account instead of being forced to make a Microsoft
+    account.</p></li>
+    <li><p>Then click the <code>Add Hardware</code> and add the GPU and
+    the GPU audio device one after the other. Also add another CDROM
+    drive and put the virtio-win iso in it.</p></li>
+    <li><p>Now for a little tinkering. Click on the
+    <code>Overview</code> tab, then the <code>XML</code> sub-tab. Under
+    the <code>&lt;vcpu&gt;</code> tags, you can add
+    <code>&lt;cputune&gt;</code> tags to pin certain cores of your CPU
+    to the virtual machine to improve performance. This
+    <strong>will</strong> differ from machine to machine (you can check
+    your system by running <code>lscpu -e</code>), but I have chosen to
+    pin half my CPU cores as follows.</p></li>
+    </ol>
+    <div class="sourceCode" id="cb1"><pre
+    class="sourceCode xml"><code class="sourceCode xml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">cputune</span>&gt;</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">vcpupin</span><span class="ot"> vcpu=</span><span class="st">&quot;0&quot;</span><span class="ot"> cpuset=</span><span class="st">&quot;6&quot;</span>/&gt;</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">vcpupin</span><span class="ot"> vcpu=</span><span class="st">&quot;1&quot;</span><span class="ot"> cpuset=</span><span class="st">&quot;7&quot;</span>/&gt;</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">vcpupin</span><span class="ot"> vcpu=</span><span class="st">&quot;2&quot;</span><span class="ot"> cpuset=</span><span class="st">&quot;8&quot;</span>/&gt;</span>
@@ -186,15 +91,15 @@ class="sourceCode xml"><code class="sourceCode xml"><span id="cb1-1"><a href="#c
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">vcpupin</span><span class="ot"> vcpu=</span><span class="st">&quot;4&quot;</span><span class="ot"> cpuset=</span><span class="st">&quot;10&quot;</span>/&gt;</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">vcpupin</span><span class="ot"> vcpu=</span><span class="st">&quot;5&quot;</span><span class="ot"> cpuset=</span><span class="st">&quot;11&quot;</span>/&gt;</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">cputune</span>&gt;</span></code></pre></div>
-<ol start="9" type="1">
-<li>Sometimes when NVIDIA GPUs detect that they are running in a vm,
-they will respond with a <code>CODE 43</code> error and refuse to work.
-NVIDIA has shown that they are becoming more lax with this behavior, but
-just for peace of mind, I recommend that you add the following between
-the <code>&lt;features&gt;</code> tags.</li>
-</ol>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode xml"><code class="sourceCode xml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">features</span>&gt;</span>
+    <ol start="9" type="1">
+    <li>Sometimes when NVIDIA GPUs detect that they are running in a vm,
+    they will respond with a <code>CODE 43</code> error and refuse to
+    work. NVIDIA has shown that they are becoming more lax with this
+    behavior, but just for peace of mind, I recommend that you add the
+    following between the <code>&lt;features&gt;</code> tags.</li>
+    </ol>
+    <div class="sourceCode" id="cb2"><pre
+    class="sourceCode xml"><code class="sourceCode xml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">features</span>&gt;</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">acpi</span>/&gt;</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">apic</span>/&gt;</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">hyperv</span><span class="ot"> mode=</span><span class="st">&quot;custom&quot;</span>&gt;</span>
@@ -215,48 +120,48 @@ class="sourceCode xml"><code class="sourceCode xml"><span id="cb2-1"><a href="#c
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">smm</span><span class="ot"> state=</span><span class="st">&quot;on&quot;</span>/&gt;</span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">ioapic</span><span class="ot"> driver=</span><span class="st">&quot;kvm&quot;</span>&gt;</span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">features</span>&gt;</span></code></pre></div>
-<ol start="10" type="1">
-<li><p>Now move to the <code>Boot Options</code> tab and make sure that
-the CDROM is set higher than the drive you are installing Windows to.
-Now you can click the <code>Begin Installation</code> button and install
-Windows! (Tip: click)</p></li>
-<li><p>After Windows is installed, shut it down, go back, and re-add the
-<code>nic</code>. The default options should be find.</p></li>
-<li><p>Turn on the virtual machine, and install the 64-bit msi on the
-root of the virtio-win disc. You’re basically installing this instead of
-drivers from your CPU or motherboard manufacturer’s website.</p></li>
-<li><p>We can now open the Microsoft Store, go to the
-<code>Downloads and Updates</code> section, and make sure that the
-program <code>App Install</code> is up-to-date.</p></li>
-<li><p>Then open either <code>Windows Terminal</code> or
-<code>Powershell</code> as administrator and run the command
-<code>iwr -useb https://christitus.com/win | iex</code>. This is a <a
-href="https://github.com/ChrisTitusTech/winutil">script</a> by Chris
-Titus that disables a lot of Window’s builtin telemetry and inane
-default settings as well as automatically installs programs from the
-internet.</p></li>
-<li><p>There are many things that this script allows you to do, but the
-main thing as far as GPUs are concerned is under the
-<code>Updates</code> tab. Select the <code>Desktop</code> preset at the
-top of the screen and let the script go to work. (NOTE: It is
-incredibility important to run the script before you install updates
-from Windows Updates. In my experience, it will download updates that
-led to the dreaded <code>CODE 43</code> error.)</p></li>
-<li><p>You can now go to the <code>Settings</code> app and check for
-updates. It is a good thing if Windows Update does not automatically
-install drivers for the GPU, as the script disabled that functionality.
-You should now go and download the drivers for your GPU from the
-manufacturer’s website.</p></li>
-<li><p>If your GPU starts displaying video then you are done!</p></li>
-</ol>
-<p>Hopefully now you know how to setup a GPU accelerate virutal machine
-on Linux. It can be quite the handy skill both for the tinkerer and the
-professional!</p>
-</section>
-  <footer>
-    <h6>
-      Copyright &copy; 2025 <i>Christian J. Wade.</i> Made with &hearts; with <a href="https://daringfireball.net/projects/markdown/">Markdown</a>, & <a href="https://pandoc.org/">Pandoc</a>
-    </h6>
-  </footer>
-</body>
+    <ol start="10" type="1">
+    <li><p>Now move to the <code>Boot Options</code> tab and make sure
+    that the CDROM is set higher than the drive you are installing
+    Windows to. Now you can click the <code>Begin Installation</code>
+    button and install Windows! (Tip: click)</p></li>
+    <li><p>After Windows is installed, shut it down, go back, and re-add
+    the <code>nic</code>. The default options should be find.</p></li>
+    <li><p>Turn on the virtual machine, and install the 64-bit msi on
+    the root of the virtio-win disc. You’re basically installing this
+    instead of drivers from your CPU or motherboard manufacturer’s
+    website.</p></li>
+    <li><p>We can now open the Microsoft Store, go to the
+    <code>Downloads and Updates</code> section, and make sure that the
+    program <code>App Install</code> is up-to-date.</p></li>
+    <li><p>Then open either <code>Windows Terminal</code> or
+    <code>Powershell</code> as administrator and run the command
+    <code>iwr -useb https://christitus.com/win | iex</code>. This is a
+    <a href="https://github.com/ChrisTitusTech/winutil">script</a> by
+    Chris Titus that disables a lot of Window’s builtin telemetry and
+    inane default settings as well as automatically installs programs
+    from the internet.</p></li>
+    <li><p>There are many things that this script allows you to do, but
+    the main thing as far as GPUs are concerned is under the
+    <code>Updates</code> tab. Select the <code>Desktop</code> preset at
+    the top of the screen and let the script go to work. (NOTE: It is
+    incredibility important to run the script before you install updates
+    from Windows Updates. In my experience, it will download updates
+    that led to the dreaded <code>CODE 43</code> error.)</p></li>
+    <li><p>You can now go to the <code>Settings</code> app and check for
+    updates. It is a good thing if Windows Update does not automatically
+    install drivers for the GPU, as the script disabled that
+    functionality. You should now go and download the drivers for your
+    GPU from the manufacturer’s website.</p></li>
+    <li><p>If your GPU starts displaying video then you are
+    done!</p></li>
+    </ol>
+    <p>Hopefully now you know how to setup a GPU accelerate virutal
+    machine on Linux. It can be quite the handy skill both for the
+    tinkerer and the professional!</p>
+    </section>
+  </main>
+
+    <!-- Default footer if you want one -->
+  </body>
 </html>

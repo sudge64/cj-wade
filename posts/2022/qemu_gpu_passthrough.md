@@ -3,6 +3,7 @@ title: "QEMU GPU Passthrough Methodology"
 date: 2022-10-08T13:27:14-05:00
 author: "C.J. Wade"
 tags: [qemu, gpu, linux]
+layout: post
 ---
 
 # QEMU GPU Passthrough Methodology

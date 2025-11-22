@@ -2,6 +2,7 @@
 title: How to Get a Yubikey working on Arch Linux
 date: 2024-10-19T23:44:00-06:00
 author: "C.J. Wade"
+layout: post
 ---
 # How to Get a Yubikey working on Arch Linux
 

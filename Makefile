@@ -7,6 +7,7 @@ PANOPTS = --standalone \
           --email-obfuscation=references \
           --include-before-body=_includes/header.html \
           --include-after-body=_includes/footer.html \
+          --template=_includes/template.html \
           --katex
 
 # Configuration for HTML files (no TOC or KaTeX needed)
@@ -15,7 +16,8 @@ HTMLOPTS = --standalone \
            --section-divs \
            --email-obfuscation=references \
            --include-before-body=_includes/header.html \
-           --include-after-body=_includes/footer.html
+           --include-after-body=_includes/footer.html \
+           --template=_includes/template.html
 
 # Find all markdown files, excluding docs directory
 MD_FILES := $(shell find . -path ./docs -prune -o -name '*.md' -type f -not -name 'README.md' -print)
@@ -35,12 +37,12 @@ all: $(HTML_FILES) $(PAGES_HTML)
 	cp -r images docs
 
 # Pattern rule to build HTML from markdown
-docs/%.html: %.md
+docs/%.html: %.md _includes/template.html
 	@mkdir -p $(dir $@)
 	pandoc $(PANOPTS) --from=markdown --to=html --output "$@" "$<"
 
 # Pattern rule to process HTML files from pages
-docs/pages/%.html: pages/%.html
+docs/pages/%.html: pages/%.html _includes/template.html
 	@mkdir -p $(dir $@)
 	pandoc $(HTMLOPTS) --from=html --to=html --output "$@" "$<"
 
