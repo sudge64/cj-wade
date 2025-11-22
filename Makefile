@@ -3,7 +3,7 @@
 # Configuration
 PANOPTS = --standalone \
           --table-of-contents \
-          --css=../css/style.css \
+          --css=/css/style.css \
           --section-divs \
           --email-obfuscation=references \
           --include-before-body=_includes/header.html \
@@ -12,7 +12,7 @@ PANOPTS = --standalone \
 
 # Configuration for HTML files (no TOC or KaTeX needed)
 HTMLOPTS = --standalone \
-           --css=../css/style.css \
+           --css=/css/style.css \
            --section-divs \
            --email-obfuscation=references \
            --include-before-body=_includes/header.html \
