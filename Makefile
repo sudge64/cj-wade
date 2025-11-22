@@ -2,7 +2,6 @@
 
 # Configuration
 PANOPTS = --standalone \
-          --table-of-contents \
           --css=/css/style.css \
           --section-divs \
           --email-obfuscation=references \
