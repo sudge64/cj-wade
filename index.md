@@ -1,8 +1,3 @@
----
-layout: layout.html
-title: C.J. Wade
----
-
 # C.J. Wade
 
 ![Profile Picture](images/092122_cj_profile_512x512.png)

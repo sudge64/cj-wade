@@ -1,9 +1,3 @@
----
-title: A Round-Up of a few Personal Projects
-date: 2024-05-16T23:44:00-06:00
-author: "C.J. Wade"
-layout: post
----
 # A Round-Up of a few Personal Projects
 
 Here are some retrospectives on a few of my personal projects from the last little while.

@@ -1,11 +1,3 @@
----
-title: "QEMU GPU Passthrough Methodology"
-date: 2022-10-08T13:27:14-05:00
-author: "C.J. Wade"
-tags: [qemu, gpu, linux]
-layout: post
----
-
 # QEMU GPU Passthrough Methodology
 
 The following are the steps that I take in order to set up a Windows, specifically 11, virtual machine under Pop!_OS Linux.
