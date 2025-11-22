@@ -22,44 +22,105 @@
     }
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
-  <link rel="stylesheet" href="/css/style.css" />
+<style>
+/*
+ * Copyright 2013 Christophe-Marie Duquesne <chmd@chmd.fr>
+ *
+ * CSS for making a resume with pandoc. Inspired by moderncv.
+ *
+ * This CSS document is delivered to you under the CC BY-SA 3.0 License.
+ * https://creativecommons.org/licenses/by-sa/3.0/deed.en_US
+ */
+
+/* Whole document */
+body {
+    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+    font-family: "Helvetica", sans-serif;
+    width: 900px;
+    margin: auto;
+    padding: 1px 1px 1px 1px;
+}
+
+.title {
+    display: none;
+}
+
+/* Title of the resume */
+h1 {
+    font-size: 40px;
+    /*color: #757575;*/
+    color: #24273a;
+    text-align:center;
+    margin-bottom:15px;
+}
+
+/* Titles of categories */
+h2 {
+    /*color: #397249;*/
+    color: #1e66f5;
+}
+/* There is a bar just before each category */
+h2:before {
+    content: "";
+    display: inline-block;
+    margin-right:1%;
+    width: 16%;
+    height: 5px;
+    /*background-color: #9CB770;*/
+    background-color: #1e66f5;
+}
+
+h2:after {
+    content: "";
+    display: inline-block;
+    margin-left:1%;
+    width: 16%;
+    height: 5px;
+    /*background-color: #9CB770;*/
+    background-color: #1e66f5;
+}
+
+/* Definitions */
+dt {
+    float: left;
+    clear: left;
+    width: 17%;
+    font-weight: bold;
+}
+dd {
+    margin-left: 17%;
+}
+p {
+    margin-top:0;
+    margin-bottom:2px;
+}
+
+/* Blockquotes */
+blockquote {
+    text-align: center
+}
+
+/* Links */
+a {
+    text-decoration: none;
+}
+a:hover, a:active {
+    text-decoration: underline;
+}
+
+/* Horizontal separators */
+hr {
+    color: #A6A6A6;
+}
+
+</style>
 </head>
 <body>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css">
-    <title>{{ title | default: "C.J. Wade" }}</title>
-  </head>
-  <nav class="myNav">
-    <ul>
-      <li>
-        <a href="/" class="text-style">Home</a>
-      </li>
-      <li>
-        <a href="/#about" class="text-style">About</a>
-      </li>
-      <li>
-        <a href="/pages/projects" class="text-style">Projects</a>
-      </li>
-      <li>
-        <a href="/pages/resume_export" class="text-style">Resume</a>
-      </li>
-    </ul>
-  </nav>
 <header id="title-block-header">
 <h1 class="title">Christian J. Wade</h1>
 </header>
-<p>--- layout: "layout.html" ---</p>
-<div id="title-block-header">
-<section id="christian-j.-wade" class="level1 title">
-<h1 class="title">Christian J. Wade</h1>
-</section>
-</div>
-<section id="christian-j.-wade" class="level1">
-<h1>Christian J. Wade</h1>
-<section id="about" class="level2">
-<h2>About</h2>
+<h1 id="christian-j.-wade">Christian J. Wade</h1>
+<h2 id="about">About</h2>
 <dl>
 <dt>A Little About Me</dt>
 <dd>
@@ -79,9 +140,7 @@ The <code>RP2040</code> being a favorite of mine.
 through <code>pandoc</code>.)
 </dd>
 </dl>
-</section>
-<section id="education" class="level2">
-<h2>Education</h2>
+<h2 id="education">Education</h2>
 <dl>
 <dt>2025 - Continuing</dt>
 <dd>
@@ -99,9 +158,7 @@ Tarleton State University, Stephenville, TX
 <p><em>Minor: Mathematics</em></p>
 </dd>
 </dl>
-</section>
-<section id="experience" class="level2">
-<h2>Experience</h2>
+<h2 id="experience">Experience</h2>
 <dl>
 <dt>Sep. 2025 - Continuing</dt>
 <dd>
@@ -170,9 +227,7 @@ set</li>
 <div style="page-break-after: always;">
 
 </div>
-</section>
-<section id="projects" class="level2">
-<h2>Projects</h2>
+<h2 id="projects">Projects</h2>
 <dl>
 <dt>Jun. 2023 - Continuing</dt>
 <dd>
@@ -203,9 +258,7 @@ desktops</li>
 </ul>
 </dd>
 </dl>
-</section>
-<section id="skills" class="level2">
-<h2>Skills</h2>
+<h2 id="skills">Skills</h2>
 <dl>
 <dt>2018 - Continuing</dt>
 <dd>
@@ -217,9 +270,7 @@ Markdown, NodeJS</li>
 </ul>
 </dd>
 </dl>
-</section>
-<section id="honors-awards" class="level2">
-<h2>Honors &amp; Awards</h2>
+<h2 id="honors-awards">Honors &amp; Awards</h2>
 <dl>
 <dt>Dean’s List</dt>
 <dd>
@@ -227,9 +278,7 @@ Markdown, NodeJS</li>
 <p>Fall 2020, Spring 2022, Fall 2022, Spring 2023, Fall 2023</p>
 </dd>
 </dl>
-</section>
-<section id="activities-interests" class="level2">
-<h2>Activities &amp; Interests</h2>
+<h2 id="activities-interests">Activities &amp; Interests</h2>
 <dl>
 <dt>3D Printing</dt>
 <dd>
@@ -244,16 +293,10 @@ well as stop-motion animation.
 </dd>
 </dl>
 <blockquote>
-<p><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#x63;&#104;&#114;&#x69;&#x73;&#116;&#x69;&#x61;&#110;&#46;&#x77;&#x61;&#100;&#x65;&#64;&#x67;&#x6f;&#46;&#116;&#x61;&#114;&#108;&#x65;&#116;&#x6f;&#110;&#46;&#x65;&#100;&#x75;" class="email">&#x63;&#104;&#114;&#x69;&#x73;&#116;&#x69;&#x61;&#110;&#46;&#x77;&#x61;&#100;&#x65;&#64;&#x67;&#x6f;&#46;&#116;&#x61;&#114;&#108;&#x65;&#116;&#x6f;&#110;&#46;&#x65;&#100;&#x75;</a><br />
+<p><a href="mailto:christian.wade@go.tarleton.edu"
+class="email">christian.wade@go.tarleton.edu</a><br />
 <a href="https://cj-wade.com" class="uri">https://cj-wade.com</a><br />
 </p>
 </blockquote>
-</section>
-</section>
-  <footer>
-    <h6>
-      Copyright &copy; 2025 <i>Christian J. Wade.</i> Made with &hearts; with <a href="https://daringfireball.net/projects/markdown/">Markdown</a>, & <a href="https://pandoc.org/">Pandoc</a>
-    </h6>
-  </footer>
 </body>
 </html>

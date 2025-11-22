@@ -29,8 +29,8 @@ img {
   height: auto;
 }
 
-#title-block-header {
-  display: none;
+title, section[for="christian-j.-wade"] {
+  display: none !important;
 }
 
 .profile {

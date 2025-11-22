@@ -53,7 +53,7 @@ docs/pages/projects.html: $(MD_FILES)
 # Special rule for resume_export page
 docs/pages/resume_export.html: docs/pages/projects.html
 	cp -r pages/resume_export.html docs/pages
-	pandoc $(HTMLOPTS) --from=html --to=html --output "$@" docs/pages/resume_export.html
+	#pandoc --include-before-body=_includes/header.html --include-after-body=_includes/footer.html --from=html --to=html --output "$@" docs/pages/resume_export.html
 
 clean:
 	rm -rf docs
