@@ -24,7 +24,12 @@ a:hover, a:active {
     text-decoration: underline;
 }
 
-.title {
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+#title-block-header {
   display: none;
 }
 
