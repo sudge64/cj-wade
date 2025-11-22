@@ -2,6 +2,7 @@
 title: "My GitHub Stats"
 date: 2022-09-19T19:38:20-05:00
 author: "C.J. Wade"
+layout: post
 ---
 
 <h1 align="center">Hi there 👋, my name is C.J. Wade</h1>

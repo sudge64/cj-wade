@@ -2,6 +2,7 @@
 title: A Round-Up of a few Personal Projects
 date: 2024-05-16T23:44:00-06:00
 author: "C.J. Wade"
+layout: post
 ---
 # A Round-Up of a few Personal Projects
 
@@ -15,7 +16,7 @@ I found the [Sick68](https://www.thingiverse.com/thing:3478494) on Thingiverse a
 
 I ordered all the components, printed the case, and soldered everything together. I enjoyed my time with it, but could never shake the drive to make one I could truly call my own.
 
-![SiCK-68](/img/IMG_3421.jpeg)
+![SiCK-68](/images/2024/IMG_3421.jpeg)
 
 During my winter break of 2021, I decided to build my own keyboard around the [Raspberry Pi Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/).
 
@@ -23,15 +24,15 @@ It took all December, but I went from knowing nothing about how PCB's were made 
 
 The traces as viewed from [KiCad](https://www.kicad.org/).
 
-![Traces](/img/keyboard_pcb_traces.png)
+![Traces](/images/2024/keyboard_pcb_traces.png)
 
 The front of the bare PCB.
 
-![Front](/img/keyboard_pcb_front_crop.JPG)
+![Front](/images/2024/keyboard_pcb_front_crop.JPG)
 
 The back of the bare PCB.
 
-![Back](/img/keyboard_pcb_back_crop.JPG)
+![Back](/images/2024/keyboard_pcb_back_crop.JPG)
 
 The front of the populated PCB. I apologize for the dust, the keyboard faithfully served as my daily driver for quite a while.
 
@@ -39,13 +40,13 @@ Of note is the custom USB cable. It is made from a Micro USB breakout board conn
 
 As DIY as that solution was, I eventually settled on the below, taking a left-angle Micro USB to USB-C adapter off Aliexpress and trimming off the outer casing.
 
-![USB](/img/keyboard_final_plug.JPG)
+![USB](/images/2024/keyboard_final_plug.JPG)
 
-![Final Front](/img/keyboard_final_front_crop.JPG)
+![Final Front](/images/2024/keyboard_final_front_crop.JPG)
 
 The back of the populated PCB.
 
-![Final Back](/img/keyboard_final_back_crop.JPG)
+![Final Back](/images/2024/keyboard_final_back_crop.JPG)
 
 I am quite proud with how the keyboard turned out, although I see many areas that could feature improvement.
 
@@ -69,9 +70,9 @@ Once I got home, I was struck with inspiration and immediately set out to make a
 
 The design took all Saturday and my 3D printer took almost all Sunday. But I managed to pull it off.
 
-![Front](/img/rpi_case_front.JPG)
+![Front](/images/2024/rpi_case_front.JPG)
 
-![Back](/img/rpi_case_back.JPG)
+![Back](/images/2024/rpi_case_back.JPG)
 
 You might notice the dip in the top of the case, that was due to me leaving it under another project in my car in the hot Texas summer sun.
 
@@ -89,14 +90,14 @@ The holes for the keyswitches I generated from online tools into a DXF that I im
 
 The case as viewed from [FreeCAD](https://www.freecad.org/)
 
-![Front](/img/keyboard_case_cad_front.png)
+![Front](/images/2024/keyboard_case_cad_front.png)
 
-![Side](/img/keyboard_case_cad_side.png)
+![Side](/images/2024/keyboard_case_cad_side.png)
 
 I had the top of the case printed at my university's maker spot (their printers have rectangular beds). Once in hand, I realized that I had designed the top layer with laser-cut tolerances in mind, rather than 3D printer tolerances.
 
 I fully intended to return with a modified DXF for their laser cutter, however, the rush of the end of the semester caught me unexpectedly.
 
-![Printed](/img/keyboard_plate_front_crop.JPG)
+![Printed](/images/2024/keyboard_plate_front_crop.JPG)
 
 I do not consider this project complete, only on hold for the moment. It would not take much to push it over the finish line.

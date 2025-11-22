@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="C.J. Wade" />
+  <title>How to Get a Yubikey working on Arch Linux</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css">
+    <title>{{ title | default: "C.J. Wade" }}</title>
+  </head>
+  <nav class="myNav">
+    <ul>
+      <li>
+        <a href="/" class="text-style">Home</a>
+      </li>
+      <li>
+        <a href="/#about" class="text-style">About</a>
+      </li>
+      <li>
+        <a href="/pages/projects" class="text-style">Projects</a>
+      </li>
+      <li>
+        <a href="/pages/resume_export" class="text-style">Resume</a>
+      </li>
+    </ul>
+  </nav>
+<header id="title-block-header">
+<h1 class="title">How to Get a Yubikey working on Arch Linux</h1>
+<p class="author">C.J. Wade</p>
+<p class="date">2024-10-19T23:44:00-06:00</p>
+</header>
+<section id="how-to-get-a-yubikey-working-on-arch-linux" class="level1">
+<h1>How to Get a Yubikey working on Arch Linux</h1>
+<p>In recent months, I’ve been becoming more and more security
+conscious. To that end, I’ve invested in hardware security keys, but
+have had a bear of a time getting them to work on Arch Linux (my
+operating system of choice, by the way).</p>
+<p>This morning I’ve finally had a break through and thought I’d share
+my findings.</p>
+<section id="problem" class="level2">
+<h2>Problem</h2>
+<p>I’m using the offical <a
+href="https://www.yubico.com/products/yubico-authenticator/#h-download-yubico-authenticator">Yubico
+Authenticator</a> app and no accounts, passkeys, certificates, or slots
+would show up in their tabs. Thankfully, the key itself did show up.</p>
+<figure>
+<img src="/images/2024/yubi_failure.png"
+alt="An incredibily helpful error message." />
+<figcaption aria-hidden="true">An incredibily helpful error
+message.</figcaption>
+</figure>
+<p>Launching the app from the terminal showed that there was an infinite
+loop of the authenticator failing to find whatever it was looking
+for.</p>
+<p>Okay, so the app can’t talk to something on the back end, my first
+thought being a system service of some sort.</p>
+</section>
+<section id="a-partial-solution" class="level2">
+<h2>A Partial Solution</h2>
+<p>A quick search found <a
+href="https://www.reddit.com/r/yubikey/comments/stnuua/how_do_i_get_yubico_authenticator_to_work_on/">this
+Reddit thread</a>, where the top comment confirmed my theory. You need
+to enable the <code>pcscd</code> service. Now, this service is for
+interfacing with smart cards (more reading <a
+href="https://wiki.archlinux.org/title/Smartcards">here</a>), and smart
+cards are not as profilic today as they once were, so you will need to
+install the <code>pcsclite</code> package.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> pacman <span class="at">-S</span> pcsclite</span></code></pre></div>
+<p>The Arch Wiki page linked above also recommends installing the
+<code>ccid</code> package, <em>which provides a generic USB interface
+for smart cards.</em> <a href="#1">1</a></p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> pacman <span class="at">-S</span> ccid</span></code></pre></div>
+<p>Now we can enable the service.</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable pcscd.service</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start pcscd.service</span></code></pre></div>
+<p>In my experience, this alone does not fix the issue and I still
+receive the above error message.</p>
+</section>
+<section id="the-final-piece-of-the-puzzle" class="level2">
+<h2>The Final Piece of the Puzzle</h2>
+<p>All that build-up brings us to today. I was playing around with
+enabling and disabling the serivce, and on a whim, I decided to check
+the status of the service. This output immediately caught my eye:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pcscd.service:</span> Referenced but unset environment variable evaluates to an empty string: PCSCD_ARGS</span></code></pre></div>
+<p>Plugging that into your search engine of choice should lead you to
+this <a
+href="https://ludovicrousseau.blogspot.com/2021/08/pcsc-lite-configuration-using.html">blog
+post by Ludovic Rousseau</a>. At the end of the article, is this
+snippet:</p>
+<p><em>### pcscd arguments</em></p>
+<p><em>pcscd is started with the extra parameter $PCSCD_ARGS. By default
+this variable is empty. But you can define PCSCD_ARGS in
+/etc/default/pcscd to add more arguments to pcscd.</em></p>
+<p><em>For example you can use:</em></p>
+<p><em><code>PCSCD_ARGS=--debug</code></em></p>
+<p><em>to get debug messages in the systemd journal.</em> <a
+href="#2">2</a></p>
+<p>Additionally, Rousseau mentions that the default configuration file
+for <code>pcscd.serivce</code> is located at
+<code>/etc/default/pcscd</code>. I created the file as the super user,
+added the single line <code>PCSCD_ARGS=--debug</code>, and restarted the
+service.</p>
+<p>Voila! The authenticator was now working perfectly!</p>
+<figure>
+<img src="/images/2024/yubi_success.png"
+alt="The Authenticator working as expected." />
+<figcaption aria-hidden="true">The Authenticator working as
+expected.</figcaption>
+</figure>
+<p>It is my hope that having this information in one spot can help
+someone down the road.</p>
+</section>
+<section id="a-bashful-realization" class="level2">
+<h2>A Bashful Realization</h2>
+<p>So, while writing this post, I checked the man page for
+<code>pcscd</code> and noticed this section:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">CONFIGURATION</span> FILE</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>       <span class="ex">It</span> is possible to set arguments that will be used by pcscd with the configuration</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">file</span> /etc/default/pcscd For example you can increase the debug level using:</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>              <span class="va">PCSCD_ARGS</span><span class="op">=</span>--debug</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>       <span class="ex">Or</span> set environment variables like:</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>              <span class="va">PCSCLITE_FILTER_IGNORE_READER_NAMES</span><span class="op">=</span><span class="st">&quot;Twin&quot;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>              <span class="va">PCSCLITE_FILTER_EXTEND_READER_NAMES</span><span class="op">=</span><span class="st">&quot; </span><span class="va">$HOSTNAME</span><span class="st">&quot;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>       <span class="ex">See</span> https://blog.apdu.fr/posts/2021/08/pcsc-lite-configuration-using/ ⟨⟩ for more details.</span></code></pre></div>
+<p><a href="#3">3</a></p>
+<p>Moral of the story, Read The (F word of your choice) Manual.</p>
+</section>
+<section id="references" class="level2">
+<h2>References</h2>
+<ol type="1">
+<li><a name="1"></a> <a
+href="https://wiki.archlinux.org/title/Smartcards">Copied from Arch
+Wiki</a></li>
+<li><a name="2"></a> <a
+href="https://ludovicrousseau.blogspot.com/2021/08/pcsc-lite-configuration-using.html">Copied
+from Ludovic Rousseau’s Blog post</a></li>
+<li><a name="3"></a> Run <code>man pcscd</code></li>
+</ol>
+</section>
+</section>
+  <footer>
+    <h6>
+      Copyright &copy; 2025 <i>Christian J. Wade.</i> Made with &hearts; with <a href="https://daringfireball.net/projects/markdown/">Markdown</a>, & <a href="https://pandoc.org/">Pandoc</a>
+    </h6>
+  </footer>
+</body>
+</html>

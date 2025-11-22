@@ -24,6 +24,14 @@ a:hover, a:active {
     text-decoration: underline;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+title{
+  display: none !important;
+}
 
 .profile {
   display: flex;
@@ -38,7 +46,13 @@ a:hover, a:active {
   background-color: #AAAAAA;
 }
 
-.about {
+.profileText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about{
   display: none;
 }
 

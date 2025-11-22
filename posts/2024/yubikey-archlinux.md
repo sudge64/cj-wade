@@ -2,6 +2,7 @@
 title: How to Get a Yubikey working on Arch Linux
 date: 2024-10-19T23:44:00-06:00
 author: "C.J. Wade"
+layout: post
 ---
 # How to Get a Yubikey working on Arch Linux
 
@@ -13,7 +14,7 @@ This morning I've finally had a break through and thought I'd share my findings.
 
 I'm using the offical [Yubico Authenticator](https://www.yubico.com/products/yubico-authenticator/#h-download-yubico-authenticator) app and no accounts, passkeys, certificates, or slots would show up in their tabs. Thankfully, the key itself did show up.
 
-![An incredibily helpful error message.](/img/yubi_failure.png)
+![An incredibily helpful error message.](/images/2024/yubi_failure.png)
 
 Launching the app from the terminal showed that there was an infinite loop of the authenticator failing to find whatever it was looking for.
 
@@ -66,7 +67,7 @@ Additionally, Rousseau mentions that the default configuration file for `pcscd.s
 
 Voila! The authenticator was now working perfectly!
 
-![The Authenticator working as expected.](/img/yubi_success.png)
+![The Authenticator working as expected.](/images/2024/yubi_success.png)
 
 It is my hope that having this information in one spot can help someone down the road.
 

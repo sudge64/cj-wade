@@ -1,10 +1,12 @@
-# cj-wade.com
+# [cj-wade.com](https://www.cj-wade.com/)
 
-Built with 11ty.
+Built with pure `markdown` and `css`. Rendered to `html` via [pandoc](https://pandoc.org/).
 
-Deployed with help from https://lea-tortay.com/articles/github-pages-eleventy/
+Inspired by [Tavis Ormandy](https://github.com/taviso)'s [website](https://cmpxchg8b.com/index.html) and [z8](https://github.com/0x666690)'s [website](https://z8.re/).
 
-Normally 11ty deploys from `_site`, but for `GitHub Pages`, deployment occurs from `docs`.
+[Will Styler](https://wstyler.ucsd.edu/index.html)'s [page over the topic](https://wstyler.ucsd.edu/posts/pandoc_website.html) was a great help.
+
+For `GitHub Pages`, deployment occurs from `docs`.
 
 ## Build Instructions
 
