@@ -1,3 +1,9 @@
+---
+title: How to Get a Yubikey working on Arch Linux
+date: 2024-10-19T23:44:00-06:00
+author: "C.J. Wade"
+layout: post
+---
 # How to Get a Yubikey working on Arch Linux
 
 In recent months, I've been becoming more and more security conscious. To that end, I've invested in hardware security keys, but have had a bear of a time getting them to work on Arch Linux (my operating system of choice, by the way).

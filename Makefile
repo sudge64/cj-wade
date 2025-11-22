@@ -2,8 +2,7 @@
 
 # Configuration
 PANOPTS = --standalone \
-          --table-of-contents \
-          --css=../css/style.css \
+          --css=/css/style.css \
           --section-divs \
           --email-obfuscation=references \
           --include-before-body=_includes/header.html \
@@ -12,7 +11,7 @@ PANOPTS = --standalone \
 
 # Configuration for HTML files (no TOC or KaTeX needed)
 HTMLOPTS = --standalone \
-           --css=../css/style.css \
+           --css=/css/style.css \
            --section-divs \
            --email-obfuscation=references \
            --include-before-body=_includes/header.html \
@@ -46,23 +45,9 @@ docs/pages/%.html: pages/%.html
 	pandoc $(HTMLOPTS) --from=html --to=html --output "$@" "$<"
 
 # Special rule for projects page
-docs/pages/projects.html: $(MD_FILES) _includes/header.html _includes/footer.html
+docs/pages/projects.html: $(MD_FILES)
 	@mkdir -p docs/pages
-	@echo "---" > /tmp/projects.md
-	@echo "title: Projects" >> /tmp/projects.md
-	@echo "---" >> /tmp/projects.md
-	@echo "" >> /tmp/projects.md
-	@echo "# Projects" >> /tmp/projects.md
-	@echo "" >> /tmp/projects.md
-	@find posts -name '*.md' -type f | sort -r | while read post; do \
-		title=$$(grep -m1 '^title:' "$$post" | sed 's/^title: *//; s/"//g' | sed "s/'//g"); \
-		url=$$(echo "$$post" | sed 's|^posts/|/posts/|; s|\.md$$|.html|'); \
-		if [ -n "$$title" ]; then \
-			echo "## [$$title]($$url)" >> /tmp/projects.md; \
-		fi; \
-	done
-	pandoc $(HTMLOPTS) --from=markdown --to=html --output "$@" /tmp/projects.md
-	@rm /tmp/projects.md
-
+	python3 _scripts/generate_projects.py | \
+		pandoc $(HTMLOPTS) --from=markdown --to=html --output "$@"
 clean:
 	rm -rf docs
