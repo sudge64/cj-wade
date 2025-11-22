@@ -1,20 +1,66 @@
----
-title: Oops! Not Found
-permalink: 404.html
-layout: layout.html
----
-
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>{{ title }}</title>
-	</head>
-	<body>
-		<h1>{{ title }}</h1>
-		<p>
-        Sorry, that page could not be found. Return to <a href="/">home page?</a>
-		</p>
-	</body>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>{{ title }}</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css">
+    <title>{{ title | default: "C.J. Wade" }}</title>
+  </head>
+  <nav class="myNav">
+    <ul>
+      <li>
+        <a href="/" class="text-style">Home</a>
+      </li>
+      <li>
+        <a href="/#about" class="text-style">About</a>
+      </li>
+      <li>
+        <a href="/projects" class="text-style">Projects</a>
+      </li>
+      <li>
+        <a href="/pages/resume_export" class="text-style">Resume</a>
+      </li>
+    </ul>
+  </nav>
+<header id="title-block-header">
+<h1 class="title">{{ title }}</h1>
+</header>
+<p>--- title: Oops! Not Found permalink: 404.html layout: layout.html
+---</p>
+<section id="title" class="level1">
+<h1>{{ title }}</h1>
+<p>Sorry, that page could not be found. Return to <a href="/">home
+page?</a></p>
+</section>
+  <footer>
+    <h6>
+      Copyright &copy; 2025 <i>Christian J. Wade.</i> Made with &hearts; with <a href="https://daringfireball.net/projects/markdown/">Markdown</a>, & <a href="https://pandoc.org/">Pandoc</a>
+    </h6>
+  </footer>
+</body>
 </html>
