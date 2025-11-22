@@ -1,7 +1,6 @@
 ---
 title: C.J. Wade
 ---
-# C.J. Wade
 
 <div class="profile">
 <img class="profileImage" src="images/092122_cj_profile_512x512.png" alt="Profile Picture">

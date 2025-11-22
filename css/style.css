@@ -29,7 +29,7 @@ img {
   height: auto;
 }
 
-title, section[for="christian-j.-wade"] {
+title{
   display: none !important;
 }
 
