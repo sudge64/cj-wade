@@ -17,6 +17,7 @@ MD_FILES := $(shell find . -path ./docs -prune -o -name '*.md' -type f -not -nam
 HTML_FILES := $(filter-out R%, $(patsubst ./%.md,docs/%.html,$(MD_FILES)))
 
 all: $(HTML_FILES)
+	cp -r CNAME docs
 	cp -r css docs
 	cp -r images docs
 	cp -r pages docs
