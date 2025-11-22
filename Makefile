@@ -48,6 +48,6 @@ docs/pages/%.html: pages/%.html
 docs/pages/projects.html: $(MD_FILES)
 	@mkdir -p docs/pages
 	python3 _scripts/generate_projects.py | \
-		pandoc $(HTMLOPTS) --from=markdown --to=html --output "$@"
+	pandoc $(HTMLOPTS) --from=markdown --to=html --output "$@"
 clean:
 	rm -rf docs

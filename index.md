@@ -1,8 +1,15 @@
+---
+title: C.J. Wade
+---
 # C.J. Wade
 
-![Profile Picture](images/092122_cj_profile_512x512.png)
+<div class="profile">
+<img class="profileImage" src="images/092122_cj_profile_512x512.png" alt="Profile Picture">
+</div>
 
-Hello! My name is Christian J. Wade, but please, call me C.J.
+<div class="profileText">
+<p>Hello! My name is Christian J. Wade, but please, call me C.J.</p>
+</div>
 
 ## About {#about .about}
 
