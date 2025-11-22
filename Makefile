@@ -20,16 +20,16 @@ HTMLOPTS = --standalone \
 # Find all markdown files, excluding docs directory
 MD_FILES := $(shell find . -path ./docs -prune -o -name '*.md' -type f -not -name 'README.md' -print)
 
-# Find all HTML files in pages directory (excluding projects.html)
-PAGE_FILES := $(filter-out pages/projects.html, $(wildcard pages/*.html))
+# Find all HTML files in pages directory (excluding projects.html & resume_export.html)
+PAGE_FILES := $(filter-out pages/projects.html, pages/resume_export.html, $(wildcard pages/*.html))
 
 # Convert markdown paths to html paths in docs directory
-HTML_FILES := $(filter-out R%, $(patsubst ./%.md,docs/%.html,$(MD_FILES)))
+HTML_FILES := $(patsubst ./%.md,docs/%.html,$(MD_FILES))
 
 # Convert pages HTML paths to docs/pages
-PAGES_HTML := $(patsubst pages/%.html,docs/pages/%.html,$(PAGE_FILES))
+PAGES_HTML := $($(patsubst pages/%.html,docs/pages/%.html,$(PAGE_FILES)))
 
-all: $(HTML_FILES) $(PAGES_HTML) docs/pages/projects.html
+all: $(HTML_FILES) $(PAGES_HTML) docs/pages/resume_export.html
 	cp -r CNAME docs
 	cp -r css docs
 	cp -r images docs
@@ -49,5 +49,11 @@ docs/pages/projects.html: $(MD_FILES)
 	@mkdir -p docs/pages
 	python3 _scripts/generate_projects.py | \
 	pandoc $(HTMLOPTS) --from=markdown --to=html --output "$@"
+
+# Special rule for resume_export page
+docs/pages/resume_export.html: docs/pages/projects.html
+	cp -r pages/resume_export.html docs/pages
+	pandoc --include-before-body=_includes/header.html --include-after-body=_includes/footer.html --from=html --to=html --output "$@" docs/pages/resume_export.html
+
 clean:
 	rm -rf docs
